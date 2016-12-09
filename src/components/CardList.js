@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ListView, View, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import { Spinner } from './common';
 import CardDetail from './CardDetail';
 import { fetchData } from '../actions/RecipeActions';
@@ -18,7 +19,13 @@ class CardList extends Component {
   }
 
   renderRow(recipe) {
-    return <CardDetail key={recipe.id} recipe={recipe} />;
+    return (
+      <CardDetail
+      key={recipe.id}
+      recipe={recipe}
+      onPress={() => { Actions.recipeDetail(recipe); }}
+      />
+    );
   }
 
   render() {
@@ -33,13 +40,14 @@ class CardList extends Component {
     }
 
     return (
-      <ScrollView>
+      <ScrollView style={styles.bgStyle}>
         <Text style={styles.headingStyle}>
           All Recipes
         </Text>
         <ListView
           dataSource={stateFromRedux}
           renderRow={this.renderRow}
+          enableEmptySections
         />
     </ScrollView>
     );
@@ -57,6 +65,9 @@ const styles = {
     fontFamily: 'Crimson Text',
     padding: 15,
     color: '#555150'
+  },
+  bgStyle: {
+    backgroundColor: 'whitesmoke'
   }
 };
 

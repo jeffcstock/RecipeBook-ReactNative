@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 
-export const fetchData = () => {
+export const fetchUser = () => {
   return dispatch => {
-    dispatch(fetchingData());
+    dispatch(fetchingUser());
 
     axios.get('http://localhost:3000/api/v1/recipes.json')
       .then(response => {
@@ -13,14 +13,14 @@ export const fetchData = () => {
   };
 };
 
-export const fetchingData = () => {
+export const fetchingUser = () => {
   return {
-    type: 'FETCHING_DATA'
+    type: 'FETCHING_USER'
   };
 };
-export const fetchedData = (recipe) => {
+export const fetchedUser = (user) => {
   return {
-    type: 'FETCHED_DATA',
-    payload: recipe
+    type: 'FETCHED_USER',
+    payload: user
   };
 };
