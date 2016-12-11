@@ -2,6 +2,7 @@ import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
 import CardList from './components/CardList';
 import RecipeDetail from './components/RecipeDetail';
+import LoginForm from './components/LoginForm';
 
 const RouterComponent = () => {
   return (
@@ -10,6 +11,13 @@ const RouterComponent = () => {
       navigationBarStyle={styles.navBarStyle}
       sceneStyle={{ paddingTop: 60 }}
     >
+      <Scene key='auth'>
+        <Scene
+          key='login'
+          component={LoginForm}
+          title='Please Login'
+        />
+      </Scene>
       <Scene key='index' title="RecipeBook">
         <Scene key='cardList' component={CardList} title='RecipeBook' />
         <Scene key='recipeDetail' component={RecipeDetail} title='RecipeBook' />

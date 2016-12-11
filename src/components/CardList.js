@@ -72,12 +72,14 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  console.log(state.recipes.url);
-    return state.recipes;
+  console.log(state);
+    return (
+      state.recipes
+    );
   };
 
 const mapDispatchToProps = dispatch => {
-  // console.log(dispatch);
+  console.log(dispatch);
   return {
     fetchRecipes() {
       dispatch(fetchData());

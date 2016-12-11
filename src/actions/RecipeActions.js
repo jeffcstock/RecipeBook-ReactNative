@@ -1,15 +1,22 @@
 import axios from 'axios';
-import { Actions } from 'react-native-router-flux';
+import { AsyncStorage } from 'react-native';
 
 export const fetchData = () => {
   return dispatch => {
     dispatch(fetchingData());
-
-    axios.get('http://localhost:3000/api/v1/recipes.json')
-      .then(response => {
-        dispatch(fetchedData(response.data));
+    // getItem gets the items from the rails db for the current user. The req
+    // expects the JWT in the header.
+    AsyncStorage.getItem('jwt', (err, token) => {
+      axios.get('http://localhost:3000/api/v1/recipes.json', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
-      .catch(err => console.log(err));
+      .then(response => {
+          dispatch(fetchedData(response.data));
+        })
+        .catch(error => console.log(error));
+    });
   };
 };
 
