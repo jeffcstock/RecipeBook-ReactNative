@@ -11,16 +11,16 @@ const RouterComponent = () => {
       navigationBarStyle={styles.navBarStyle}
       sceneStyle={{ paddingTop: 60 }}
     >
+    <Scene key='index' title="RecipeBook">
+      <Scene key='cardList' component={CardList} title='RecipeBook' />
+      <Scene key='recipeDetail' component={RecipeDetail} title='RecipeBook' />
+    </Scene>
       <Scene key='auth'>
         <Scene
           key='login'
           component={LoginForm}
           title='Please Login'
         />
-      </Scene>
-      <Scene key='index' title="RecipeBook">
-        <Scene key='cardList' component={CardList} title='RecipeBook' />
-        <Scene key='recipeDetail' component={RecipeDetail} title='RecipeBook' />
       </Scene>
     </Router>
   );
@@ -37,5 +37,5 @@ const styles = {
 
   }
 };
-
+console.disableYellowBox = true
 export default RouterComponent;

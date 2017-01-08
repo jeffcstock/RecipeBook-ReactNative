@@ -71,15 +71,9 @@ const styles = {
   }
 };
 
-const mapStateToProps = state => {
-  console.log(state);
-    return (
-      state.recipes
-    );
-  };
+const mapStateToProps = state => state.recipes;
 
 const mapDispatchToProps = dispatch => {
-  console.log(dispatch);
   return {
     fetchRecipes() {
       dispatch(fetchData());

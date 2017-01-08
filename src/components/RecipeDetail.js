@@ -104,17 +104,17 @@ const RecipeDetail = (recipe) => {
     </View>
 
     <View>
-      {ingredients.map((ingredient) => {
+      {ingredients.map(({ ingredientId, ingredientQuantity, ingredientName }) => {
       return (
-          <View key={ingredient.ingredientId} style={ingredientRowStyle}>
+          <View key={ingredientId} style={ingredientRowStyle}>
             <View>
               <Text style={ingredientStyle}>
-                {ingredient.ingredientName}
+                {ingredientName}
               </Text>
             </View>
             <View>
               <Text style={quantityStyle}>
-                {ingredient.ingredientQuantity}
+                {ingredientQuantity}
               </Text>
             </View>
           </View>
@@ -134,14 +134,14 @@ const RecipeDetail = (recipe) => {
     </View>
 
     <View style={{ marginRight: 30 }}>
-      {steps.map((step, index) => {
+      {steps.map(({ stepId, stepBody }, index) => {
       return (
-          <View key={step.stepId} style={ingredientRowStyle}>
+          <View key={stepId} style={ingredientRowStyle}>
             <Text style={stepNumberStyle}>
               {index + 1}
             </Text>
             <Text style={ingredientStyle}>
-              {step.stepBody}
+              {stepBody}
             </Text>
           </View>
         );
