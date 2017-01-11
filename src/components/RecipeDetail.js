@@ -44,10 +44,7 @@ const RecipeDetail = (recipe) => {
     <View>
       <Title title={title} />
     </View>
-
-    <View style={{ marginBottom: 20 }}>
-      <Description description={description} />
-    </View>
+    <Description description={description} />
 
 
     <View style={{ paddingLeft: 20 }}>

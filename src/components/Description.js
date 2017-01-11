@@ -1,11 +1,13 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Description = ({ description }) => {
   return (
-    <Text style={styles.descriptionStyle}>
-      {description}
-    </Text>
+    <View style={{ marginBottom: 30 }}>
+      <Text style={styles.descriptionStyle}>
+        {description}
+      </Text>
+    </View>
   );
 };
 
