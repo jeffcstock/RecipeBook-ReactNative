@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView, Image } from 'react-native';
-import { Hr } from './common/Hr';
+import Title from './Title';
 
 const RecipeDetail = (recipe) => {
   const {
@@ -15,7 +15,6 @@ const RecipeDetail = (recipe) => {
   } = recipe;
 
   const {
-    recipeTitleStyle,
     bgStyle,
     imageStyle,
     descriptionStyle,
@@ -43,9 +42,7 @@ const RecipeDetail = (recipe) => {
       />
 
     <View>
-      <Text style={recipeTitleStyle}>
-        {title}
-      </Text>
+      <Title title={title} />
     </View>
 
     <View style={{ marginBottom: 20 }}>
@@ -155,15 +152,6 @@ const RecipeDetail = (recipe) => {
 const styles = {
   bgStyle: {
     backgroundColor: 'whitesmoke'
-  },
-  recipeTitleStyle: {
-    fontSize: 30,
-    fontFamily: 'Crimson Text',
-    color: '#555150',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 20,
-    lineHeight: 30
   },
   imageStyle: {
     height: 200,
