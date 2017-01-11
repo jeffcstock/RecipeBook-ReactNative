@@ -41,11 +41,8 @@ const RecipeDetail = (recipe) => {
         source={{ uri: feature.url }}
       />
 
-    <View>
-      <Title title={title} />
-    </View>
+    <Title title={title} />
     <Description description={description} />
-
 
     <View style={{ paddingLeft: 20 }}>
       <Text style={subtitleStyle}>

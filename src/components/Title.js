@@ -1,11 +1,13 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Title = ({ title }) => {
   return (
+    <View>
       <Text style={styles.recipeTitleStyle}>
         {title}
       </Text>
+    </View>
   );
 };
 
