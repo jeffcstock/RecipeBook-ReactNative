@@ -4,7 +4,8 @@ import Title from './Title';
 import Description from './Description';
 import Subhead from './Subhead';
 import HeaderWithIcon from './HeaderWithIcon';
-import Harvest from '../StaticImages/harvest.png';
+import HarvestIcon from '../StaticImages/harvest.png';
+import RecipeIcon from '../StaticImages/recipe-icon.png';
 
 const RecipeDetail = (recipe) => {
   const {
@@ -21,17 +22,11 @@ const RecipeDetail = (recipe) => {
   const {
     bgStyle,
     imageStyle,
-    ingredientHeaderStyle,
-    sectionStyle,
-    iconStyle,
     ingredientRowStyle,
     ingredientStyle,
     quantityStyle,
     stepNumberStyle,
   } = styles;
-
-  const harvest = require('../StaticImages/harvest.png');
-  const recipeIcon = require('../StaticImages/recipe-icon.png');
 
   return (
     <ScrollView style={bgStyle}>
@@ -43,10 +38,7 @@ const RecipeDetail = (recipe) => {
         prepTime={prepTime}
         cookTime={cookTime}
       />
-      <HeaderWithIcon
-        icon={Harvest}
-        text={'Ingredients:'}
-      />
+      <HeaderWithIcon icon={HarvestIcon} text={'Ingredients:'} />
 
     <View>
       {ingredients.map(({ ingredientId, ingredientQuantity, ingredientName }) => {
@@ -67,16 +59,7 @@ const RecipeDetail = (recipe) => {
       })}
     </View>
 
-    <View style={sectionStyle}>
-      <View>
-        <Image source={recipeIcon} style={iconStyle} />
-      </View>
-      <View style={{ paddingLeft: 15 }}>
-        <Text style={ingredientHeaderStyle}>
-          Directions:
-        </Text>
-      </View>
-    </View>
+    <HeaderWithIcon icon={RecipeIcon} text={'Directions:'} />
 
     <View style={{ marginRight: 30 }}>
       {steps.map(({ stepId, stepBody }, index) => {
@@ -106,16 +89,6 @@ const styles = {
     flex: 1,
     margin: 0,
     width: null,
-  },
-  sectionStyle: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginRight: 20,
-    marginTop: 20,
-    alignItems: 'flex-end',
-    marginBottom: 15,
-    marginLeft: 20,
-    paddingRight: 10
   },
   ingredientRowStyle: {
     flexDirection: 'row',
