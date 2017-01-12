@@ -4,6 +4,7 @@ import Title from './Title';
 import Description from './Description';
 import Subhead from './Subhead';
 import HeaderWithIcon from './HeaderWithIcon';
+import Ingredient from './Ingredient';
 import HarvestIcon from '../StaticImages/harvest.png';
 import RecipeIcon from '../StaticImages/recipe-icon.png';
 
@@ -40,41 +41,34 @@ const RecipeDetail = (recipe) => {
       />
       <HeaderWithIcon icon={HarvestIcon} text={'Ingredients:'} />
 
-    <View>
-      {ingredients.map(({ ingredientId, ingredientQuantity, ingredientName }) => {
-      return (
-          <View key={ingredientId} style={ingredientRowStyle}>
-            <View>
+      <View>
+        {ingredients.map(({ ingredientId, ingredientQuantity, ingredientName }) => {
+        return (
+            <Ingredient
+              ingredientId={ingredientId}
+              ingredientName={ingredientName}
+              ingredientQuantity={ingredientQuantity}
+            />
+          );
+        })}
+      </View>
+
+      <HeaderWithIcon icon={RecipeIcon} text={'Directions:'} />
+
+      <View style={{ marginRight: 30 }}>
+        {steps.map(({ stepId, stepBody }, index) => {
+        return (
+            <View key={stepId} style={ingredientRowStyle}>
+              <Text style={stepNumberStyle}>
+                {index + 1}
+              </Text>
               <Text style={ingredientStyle}>
-                {ingredientName}
+                {stepBody}
               </Text>
             </View>
-            <View>
-              <Text style={quantityStyle}>
-                {ingredientQuantity}
-              </Text>
-            </View>
-          </View>
-        );
-      })}
-    </View>
-
-    <HeaderWithIcon icon={RecipeIcon} text={'Directions:'} />
-
-    <View style={{ marginRight: 30 }}>
-      {steps.map(({ stepId, stepBody }, index) => {
-      return (
-          <View key={stepId} style={ingredientRowStyle}>
-            <Text style={stepNumberStyle}>
-              {index + 1}
-            </Text>
-            <Text style={ingredientStyle}>
-              {stepBody}
-            </Text>
-          </View>
-        );
-      })}
-    </View>
+          );
+        })}
+      </View>
 
     </ScrollView>
   );
@@ -89,27 +83,6 @@ const styles = {
     flex: 1,
     margin: 0,
     width: null,
-  },
-  ingredientRowStyle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: 20,
-    marginRight: 20,
-    borderBottomWidth: 1,
-    borderColor: '#e8e8e8',
-    paddingTop: 10,
-    paddingBottom: 10
-  },
-  ingredientStyle: {
-    fontFamily: 'Work Sans',
-    textAlign: 'left',
-    fontSize: 16,
-    color: '#555150',
-  },
-  quantityStyle: {
-    fontFamily: 'WorkSans-SemiBold',
-    color: '#555150',
-    fontSize: 18
   },
   stepNumberStyle: {
     fontFamily: 'WorkSans-SemiBold',
