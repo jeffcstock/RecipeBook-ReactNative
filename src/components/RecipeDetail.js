@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, Image } from 'react-native';
 import Title from './Title';
 import Description from './Description';
+import Subhead from './Subhead';
 
 const RecipeDetail = (recipe) => {
   const {
@@ -43,43 +44,11 @@ const RecipeDetail = (recipe) => {
 
     <Title title={title} />
     <Description description={description} />
-
-    <View style={{ paddingLeft: 20 }}>
-      <Text style={subtitleStyle}>
-        <View style={subheadSectionStyle}>
-          <Text style={subtitleStyle}>
-            <Text style={light}>
-              Serves:{'\n'}
-            </Text>
-            <Text style={subtitleSecondStyle}>
-              {yieldSize}
-            </Text>
-          </Text>
-        </View>
-
-        <View style={[subheadSectionStyle, { marginLeft: -10 }]}>
-          <Text style={subtitleStyle}>
-            <Text style={light}>
-              Prep:{'\n'}
-            </Text>
-            <Text style={subtitleSecondStyle}>
-              {prepTime} min
-            </Text>
-          </Text>
-        </View>
-
-        <View style={subheadSectionStyle}>
-          <Text style={subtitleStyle}>
-            <Text style={light}>
-              Cook:{'\n'}
-            </Text>
-            <Text style={subtitleSecondStyle}>
-              {cookTime} min
-            </Text>
-          </Text>
-        </View>
-      </Text>
-    </View>
+    <Subhead
+      yieldSize={yieldSize}
+      prepTime={prepTime}
+      cookTime={cookTime}
+    />
 
     <View style={sectionStyle}>
       <View>
@@ -151,19 +120,19 @@ const styles = {
     margin: 0,
     width: null,
   },
-  subtitleStyle: {
-    fontFamily: 'WorkSans-SemiBold',
-    color: '#555150',
-  },
-  subtitleSecondStyle: {
-    fontSize: 20
-  },
   subheadSectionStyle: {
     height: 50,
     width: 100
   },
+  subtitleStyle: {
+    fontFamily: 'WorkSans-SemiBold',
+    color: '#555150',
+  },
   light: {
     color: '#AFAFAF'
+  },
+  subtitleSecondStyle: {
+    fontSize: 20
   },
   sectionStyle: {
     flexDirection: 'row',
