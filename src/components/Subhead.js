@@ -2,23 +2,23 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import SubheadItem from './SubheadItem';
 
-const Subhead = (props) => {
+const Subhead = ({ yieldSize, prepTime, cookTime }) => {
   return (
     <View style={{ paddingLeft: 20 }}>
       <Text>
         <SubheadItem
           prefix={'Serves'}
-          quantity={props.yieldSize}
+          quantity={yieldSize}
           suffix={''}
         />
         <SubheadItem
           prefix={'Prep'}
-          quantity={props.prepTime}
+          quantity={prepTime}
           suffix={'min'}
         />
         <SubheadItem
           prefix={'Cook'}
-          quantity={props.cookTime}
+          quantity={cookTime}
           suffix={'min'}
         />
       </Text>
