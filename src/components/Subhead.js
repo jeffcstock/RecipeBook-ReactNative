@@ -5,7 +5,7 @@ import SubheadItem from './SubheadItem';
 const Subhead = (props) => {
   return (
     <View style={{ paddingLeft: 20 }}>
-      <Text style={styles.subtitleStyle}>
+      <Text>
         <SubheadItem
           prefix={'Serves'}
           quantity={props.yieldSize}
@@ -21,28 +21,9 @@ const Subhead = (props) => {
           quantity={props.cookTime}
           suffix={'min'}
         />
-
-      { /*<View style={[styles.subheadSectionStyle, { marginLeft: -10 }]}> */}
       </Text>
     </View>
   );
-};
-
-const styles = {
-  subheadSectionStyle: {
-    height: 50,
-    width: 100
-  },
-  subtitleStyle: {
-    fontFamily: 'WorkSans-SemiBold',
-    color: '#555150',
-  },
-  light: {
-    color: '#AFAFAF'
-  },
-  subtitleSecondStyle: {
-    fontSize: 20
-  },
 };
 
 export default Subhead;

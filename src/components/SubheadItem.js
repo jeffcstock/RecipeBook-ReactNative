@@ -5,10 +5,10 @@ const SubheadItem = ({ quantity, prefix, suffix }) => {
   return (
     <View style={styles.subheadSectionStyle}>
       <Text style={styles.subtitleStyle}>
-        <Text style={styles.light}>
+        <Text style={{ color: '#AFAFAF' }}>
           {prefix}:{'\n'}
         </Text>
-        <Text style={styles.subtitleSecondStyle}>
+        <Text style={{ fontSize: 20 }}>
           {quantity} {suffix}
         </Text>
       </Text>
@@ -24,12 +24,6 @@ const styles = {
   subtitleStyle: {
     fontFamily: 'WorkSans-SemiBold',
     color: '#555150',
-  },
-  light: {
-    color: '#AFAFAF'
-  },
-  subtitleSecondStyle: {
-    fontSize: 20
   },
 };
 
