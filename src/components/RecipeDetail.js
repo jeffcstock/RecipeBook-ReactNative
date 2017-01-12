@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, ScrollView, Image } from 'react-native';
 import Title from './Title';
 import Description from './Description';
 import Subhead from './Subhead';
 import HeaderWithIcon from './HeaderWithIcon';
 import Ingredient from './Ingredient';
+import Step from './Step';
+
 import HarvestIcon from '../StaticImages/harvest.png';
 import RecipeIcon from '../StaticImages/recipe-icon.png';
 
@@ -20,18 +22,12 @@ const RecipeDetail = (recipe) => {
     steps
   } = recipe;
 
-  const {
-    bgStyle,
-    imageStyle,
-    ingredientRowStyle,
-    ingredientStyle,
-    quantityStyle,
-    stepNumberStyle,
-  } = styles;
-
   return (
-    <ScrollView style={bgStyle}>
-      <Image style={imageStyle} source={{ uri: feature.url }} />
+    <ScrollView style={styles.bgStyle}>
+      <Image
+        style={styles.imageStyle}
+        source={{ uri: feature.url }}
+      />
       <Title title={title} />
       <Description description={description} />
       <Subhead
@@ -58,18 +54,14 @@ const RecipeDetail = (recipe) => {
       <View style={{ marginRight: 30 }}>
         {steps.map(({ stepId, stepBody }, index) => {
         return (
-            <View key={stepId} style={ingredientRowStyle}>
-              <Text style={stepNumberStyle}>
-                {index + 1}
-              </Text>
-              <Text style={ingredientStyle}>
-                {stepBody}
-              </Text>
-            </View>
+            <Step
+              stepId={stepId}
+              stepBody={stepBody}
+              index={index}
+            />
           );
         })}
       </View>
-
     </ScrollView>
   );
 };
@@ -83,12 +75,6 @@ const styles = {
     flex: 1,
     margin: 0,
     width: null,
-  },
-  stepNumberStyle: {
-    fontFamily: 'WorkSans-SemiBold',
-    color: '#555150',
-    fontSize: 22,
-    paddingRight: 15
   },
 };
 
