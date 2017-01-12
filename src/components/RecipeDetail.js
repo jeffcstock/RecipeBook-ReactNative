@@ -3,6 +3,8 @@ import { View, Text, ScrollView, Image } from 'react-native';
 import Title from './Title';
 import Description from './Description';
 import Subhead from './Subhead';
+import HeaderWithIcon from './HeaderWithIcon';
+import Harvest from '../StaticImages/harvest.png';
 
 const RecipeDetail = (recipe) => {
   const {
@@ -19,10 +21,6 @@ const RecipeDetail = (recipe) => {
   const {
     bgStyle,
     imageStyle,
-    subheadSectionStyle,
-    subtitleStyle,
-    subtitleSecondStyle,
-    light,
     ingredientHeaderStyle,
     sectionStyle,
     iconStyle,
@@ -37,29 +35,18 @@ const RecipeDetail = (recipe) => {
 
   return (
     <ScrollView style={bgStyle}>
-      <Image
-        style={imageStyle}
-        source={{ uri: feature.url }}
+      <Image style={imageStyle} source={{ uri: feature.url }} />
+      <Title title={title} />
+      <Description description={description} />
+      <Subhead
+        yieldSize={yieldSize}
+        prepTime={prepTime}
+        cookTime={cookTime}
       />
-
-    <Title title={title} />
-    <Description description={description} />
-    <Subhead
-      yieldSize={yieldSize}
-      prepTime={prepTime}
-      cookTime={cookTime}
-    />
-
-    <View style={sectionStyle}>
-      <View>
-        <Image source={harvest} style={iconStyle} />
-      </View>
-      <View style={{ paddingLeft: 15 }}>
-        <Text style={ingredientHeaderStyle}>
-          Ingredients:
-        </Text>
-      </View>
-    </View>
+      <HeaderWithIcon
+        icon={Harvest}
+        text={'Ingredients:'}
+      />
 
     <View>
       {ingredients.map(({ ingredientId, ingredientQuantity, ingredientName }) => {
@@ -120,20 +107,6 @@ const styles = {
     margin: 0,
     width: null,
   },
-  subheadSectionStyle: {
-    height: 50,
-    width: 100
-  },
-  subtitleStyle: {
-    fontFamily: 'WorkSans-SemiBold',
-    color: '#555150',
-  },
-  light: {
-    color: '#AFAFAF'
-  },
-  subtitleSecondStyle: {
-    fontSize: 20
-  },
   sectionStyle: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -143,17 +116,6 @@ const styles = {
     marginBottom: 15,
     marginLeft: 20,
     paddingRight: 10
-  },
-  ingredientHeaderStyle: {
-    fontFamily: 'WorkSans-SemiBold',
-    color: '#555150',
-    fontSize: 24,
-    marginTop: 10,
-  },
-  iconStyle: {
-    resizeMode: 'contain',
-    width: 30,
-    height: 30,
   },
   ingredientRowStyle: {
     flexDirection: 'row',
